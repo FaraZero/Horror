@@ -47,4 +47,9 @@ public class FlashLight : MonoBehaviour
             batteryUI.transform.localScale.z
             );
     }
+
+    public void AddEnergy()
+    {
+        curBatteryLife = maxBatteryLife;
+    }
 }
