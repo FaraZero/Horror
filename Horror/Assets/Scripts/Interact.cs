@@ -36,6 +36,10 @@ public class Interact :MonoBehaviour
                 {
                     hit.collider.GetComponent<List>().MapActive();
                 }
+                if (hit.collider.tag == "Box")
+                {
+                    hit.collider.GetComponent<BoxPotre>().UseBox();
+                }
             }
         }
         else

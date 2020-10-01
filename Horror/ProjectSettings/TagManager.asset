@@ -7,6 +7,7 @@ TagManager:
   - Battery
   - Key
   - List
+  - Box
   layers:
   - Default
   - TransparentFX
