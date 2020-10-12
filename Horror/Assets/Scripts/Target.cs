@@ -4,6 +4,9 @@ using UnityEngine;
 
 public class Target : MonoBehaviour
 {
+    //anim = GetComponent<Animator>();
+    //anim.SetBool("название параметра", false/true)
+    //Animator anim;
     public float health = 100;
     public void TakeDamage(float amount)
     {

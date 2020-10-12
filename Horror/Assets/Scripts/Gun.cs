@@ -8,13 +8,9 @@ public class Gun :MonoBehaviour
     public float range = 100;
 
     public Camera fpsCam;
-    // Start is called before the first frame update
-    void Start()
-    {
-
-    }
-
-    // Update is called once per frame
+    public ParticleSystem shootEffect;
+    public GameObject bulletEffect;
+    public float impactForce = 60;
     void Update()
     {
         if (Input.GetMouseButtonDown(0))
@@ -24,12 +20,22 @@ public class Gun :MonoBehaviour
     }
     public void Shoot()
     {
+        shootEffect.Play();
         RaycastHit hit;
+
         if (Physics.Raycast(fpsCam.transform.position, fpsCam.transform.forward, out hit, range))
         {
-            Target target = hit.collider.GetComponent<Target>();
+            GameObject effect = Instantiate(bulletEffect, hit.point, Quaternion.LookRotation(hit.normal));
+            Destroy(effect, 1);
 
-            if(target != null)
+            Rigidbody rigidbody = hit.collider.GetComponent<Rigidbody>();
+            if (hit.rigidbody != null)
+            {
+                hit.rigidbody.AddForce(-hit.normal * impactForce);
+            }
+
+            Target target = hit.collider.GetComponent<Target>();
+            if (target != null)
             {
                 target.TakeDamage(damage);
             }

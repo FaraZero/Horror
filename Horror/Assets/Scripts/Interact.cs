@@ -40,6 +40,10 @@ public class Interact :MonoBehaviour
                 {
                     hit.collider.GetComponent<BoxPotre>().UseBox();
                 }
+                if (hit.collider.tag == "Med")
+                {
+                    hit.collider.GetComponent<BoxLife>().UseMedBox();
+                }
             }
         }
         else
